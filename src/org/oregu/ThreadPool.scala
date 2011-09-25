@@ -35,8 +35,14 @@ class ThreadPool(workersCount: Int) {
       while(true) {
         println("worker: Getting next job")
         val job = queue.take
+
         println("worker: Running job")
-        job.run()
+        try {
+          job.run()
+        }
+        catch {
+          case t: Throwable => println("worker: Exception caught, skipping...")
+        }
       }
     }
   }

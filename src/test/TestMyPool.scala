@@ -19,6 +19,7 @@ object TestMyPool {
           println("Thread " + i + " started")
           sleep(i * 1000)
           println("Thread " + i + " finished")
+          throw new Exception
         }
       })
     }
